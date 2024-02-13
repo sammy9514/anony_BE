@@ -50,7 +50,7 @@ export const Home = () => {
               <input
                 {...register("name")}
                 type="text"
-                className="rounded-[50px] border-red-500 border-[2px] py-1 px-[90px] md:px-[50px] md:py-2 text-[13px] bg-transparent mr-4 flex "
+                className="rounded-[50px] border-red-500 border-[2px] py-1 px-[90px] md:px-[50px] md:py-2 text-[13px] bg-transparent mr-4 flex placeholder-black ::placeholder"
                 placeholder="Enter your name"
               />
               <button
