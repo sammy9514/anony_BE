@@ -4,6 +4,7 @@ const initialState = {
   user: "" || null,
   toggle: false,
   togle: false,
+  messageSent: false,
 };
 
 const reduxState = createSlice({
@@ -19,9 +20,13 @@ const reduxState = createSlice({
     messToggle: (state: any, { payload }) => {
       state.togle = payload;
     },
+    messageSentHold: (state: any, { payload }) => {
+      state.messageSent = payload;
+    },
   },
 });
 
-export const { check, changeToggle, messToggle } = reduxState.actions;
+export const { check, changeToggle, messToggle, messageSentHold } =
+  reduxState.actions;
 
 export default reduxState.reducer;

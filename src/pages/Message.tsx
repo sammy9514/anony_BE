@@ -5,12 +5,15 @@ import { sendMessage } from "../api/Api";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { messToggle } from "../global/reduxState";
+import { messToggle, messageSentHold } from "../global/reduxState";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Message = () => {
   const selector = useSelector((state: any) => state.user);
   const tog = useSelector((state: any) => state.togle);
+  const messageSent = useSelector((state: any) => state.messageSent);
+
   const dispatch = useDispatch();
   const schema = yup.object({
     message: yup.string().required(),
@@ -26,14 +29,24 @@ export const Message = () => {
     dispatch(messToggle(true));
     console.log(data);
     sendMessage(data, token).then((res: any) => {
+      dispatch(messToggle(false));
+      dispatch(messageSentHold(true));
       console.log(res);
+      console.log(tog);
+      console.log(messageSent);
     });
   });
+
+  useEffect(() => {
+    return () => {
+      dispatch(messageSentHold(false));
+    };
+  }, []);
 
   return (
     <div className="w-full h-[calc(100vh-80px)] flex justify-center items-center pt-[60px]  bg-[#e3b3d8] ">
       <div className="w-70% h-full flex  flex-col ">
-        {!tog && token !== selector?.token ? (
+        {!tog && token !== selector?.token && !messageSent ? (
           <>
             <div className="md:text-[20px] text-[13px] font-semibold">
               Send a message to {selector?.name}
