@@ -36,11 +36,6 @@ export const Message = () => {
       console.log(res);
       console.log(tog);
       console.log(messageSent);
-
-      setTimeout(() => {
-        dispatch(messToggle(false));
-        dispatch(messageSentHold(false));
-      }, 5000);
     });
   });
 
