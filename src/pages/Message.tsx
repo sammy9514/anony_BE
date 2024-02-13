@@ -41,7 +41,7 @@ export const Message = () => {
     return () => {
       dispatch(messageSentHold(false));
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="w-full h-[calc(100vh-80px)] flex justify-center items-center pt-[60px]  bg-[#e3b3d8] ">
