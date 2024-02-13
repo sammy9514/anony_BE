@@ -1,6 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { CopyToClipBoard } from "./Copy";
+import { FaWhatsapp } from "react-icons/fa6";
+
 import { useForm } from "react-hook-form";
 
 import { registerUser } from "../api/Api";
@@ -9,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { changeToggle, check } from "../global/reduxState";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { ShareButtons } from "./ShareButton";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -64,10 +67,33 @@ export const Home = () => {
         </div>
         {tog ? (
           <>
-            <div className="py-2 px-[30px] mt-8 bg-red-700 text-[10px] md:text-[15px] text-white  max-w-[800px] rounded-[50px] flex gap-4 items-center">
-              <div className="">{`${url}${selector?.link}`}</div>
+            <div className="flex gap-4 items-center flex-col md:flex-row">
+              <div className="py-2 px-[30px] mt-4 bg-red-700 text-[10px] md:text-[15px] text-white  max-w-[800px] rounded-[50px] flex gap-4 items-center ">
+                <div className="">{`${url}${selector?.link}`}</div>
+                <div>
+                  <CopyToClipBoard text={`${url}${selector?.link}`} />
+                </div>
+              </div>
               <div>
-                <CopyToClipBoard text={`${url}${selector?.link}`} />
+                <button className="flex items-center gap-[10px] rounded-[50px] py-1 md:py-2 px-[20px] md:text-[13px] text-[10px] bg-transparent mr-4 md:mt-4 mt-1 font-bold">
+                  Share on:
+                  <div
+                    className="text-[15px] hover:text-green-500"
+                    onClick={() => {
+                      const message = `message me anonymously ${url}${selector?.link}`;
+                      const encodeMessage = encodeURIComponent(message);
+                      const whatsappURL = `https://wa.me/?text=${encodeMessage}`;
+
+                      window.location.href = whatsappURL;
+                    }}
+                  >
+                    <FaWhatsapp />
+                  </div>
+                  <div className="text-[15px] hover:text-blue-500">
+                    <ShareButtons url={`${url}${selector?.link}`} />
+                  </div>
+                  <div className="text-[15px]"></div>
+                </button>
               </div>
             </div>
             <Link to={`/get-message/${selector?.token}`}>
