@@ -25,7 +25,6 @@ export const Message = () => {
   const onHandleSubmit = handleSubmit((data: any) => {
     dispatch(messToggle(true));
     console.log(data);
-
     sendMessage(data, token).then((res: any) => {
       console.log(res);
     });
@@ -34,7 +33,7 @@ export const Message = () => {
   return (
     <div className="w-full h-[calc(100vh-80px)] flex justify-center items-center pt-[60px]  bg-[#e3b3d8] ">
       <div className="w-70% h-full flex  flex-col ">
-        {!tog ? (
+        {!tog && token !== selector?.token ? (
           <>
             <div className="md:text-[20px] text-[13px] font-semibold">
               Send a message to {selector?.name}
