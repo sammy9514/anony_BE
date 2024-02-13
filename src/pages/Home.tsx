@@ -50,7 +50,7 @@ export const Home = () => {
               <input
                 {...register("name")}
                 type="text"
-                className="rounded-[50px] border-red-500 border-[2px] py-1 px-[50px] md:px-[30px] md:py-2 text-[13px] bg-transparent mr-4 m-auto flex justify-center"
+                className="rounded-[50px] border-red-500 border-[2px] py-1 px-[90px] md:px-[50px] md:py-2 text-[13px] bg-transparent mr-4 flex "
                 placeholder="Enter your name"
               />
               <button
@@ -64,7 +64,7 @@ export const Home = () => {
         </div>
         {tog ? (
           <>
-            <div className="py-2 px-[30px] mt-8 bg-red-700 text-[10px] md:text-[15px] text-white min-w-[300px] max-w-[550px] rounded-[50px] flex gap-4 items-center">
+            <div className="py-2 px-[30px] mt-8 bg-red-700 text-[10px] md:text-[15px] text-white  max-w-[800px] rounded-[50px] flex gap-4 items-center">
               <div className="">{`${url}${selector?.link}`}</div>
               <div>
                 <CopyToClipBoard text={`${url}${selector?.link}`} />

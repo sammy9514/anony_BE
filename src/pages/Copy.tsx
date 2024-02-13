@@ -17,7 +17,7 @@ export const CopyToClipBoard = ({ text }: any) => {
     }
   };
   return (
-    <div onClick={copyToClip}>
+    <div onClick={copyToClip} className="cursor-pointer">
       {copy ? <FaRegThumbsUp /> : <MdOutlineContentCopy />}
     </div>
   );
