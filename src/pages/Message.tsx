@@ -13,6 +13,8 @@ export const Message = () => {
   const selector = useSelector((state: any) => state.user);
   const tog = useSelector((state: any) => state.togle1);
   const messageSent = useSelector((state: any) => state.messageSent1);
+  const url = window.location.pathname;
+  const name = url.split("/")[2];
 
   const dispatch = useDispatch();
   const schema = yup.object({
@@ -34,6 +36,11 @@ export const Message = () => {
       console.log(res);
       console.log(tog);
       console.log(messageSent);
+
+      setTimeout(() => {
+        dispatch(messToggle(false));
+        dispatch(messageSentHold(false));
+      }, 5000);
     });
   });
 
@@ -49,7 +56,7 @@ export const Message = () => {
         {!tog && token !== selector?.token && !messageSent ? (
           <>
             <div className="md:text-[20px] text-[13px] font-semibold">
-              Send a message to {selector?.name}
+              Send a message to {name}
             </div>
             <form onSubmit={onHandleSubmit}>
               <div className="md:w-[700px] md:min-h-[300px] w-[250px] h-[100px] mt-3 rounded-md ">
