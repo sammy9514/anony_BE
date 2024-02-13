@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: "" || null,
-  toggle: false,
-  togle: false,
-  messageSent: false,
+  toggle1: false,
+  togle1: false,
+  messageSent1: false,
 };
 
 const reduxState = createSlice({
@@ -15,13 +15,13 @@ const reduxState = createSlice({
       state.user = payload;
     },
     changeToggle: (state: any, { payload }) => {
-      state.toggle = payload;
+      state.toggle1 = payload;
     },
     messToggle: (state: any, { payload }) => {
-      state.togle = payload;
+      state.togle1 = payload;
     },
     messageSentHold: (state: any, { payload }) => {
-      state.messageSent = payload;
+      state.messageSent1 = payload;
     },
   },
 });

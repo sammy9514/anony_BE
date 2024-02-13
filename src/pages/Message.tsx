@@ -11,8 +11,8 @@ import { useEffect } from "react";
 
 export const Message = () => {
   const selector = useSelector((state: any) => state.user);
-  const tog = useSelector((state: any) => state.togle);
-  const messageSent = useSelector((state: any) => state.messageSent);
+  const tog = useSelector((state: any) => state.togle1);
+  const messageSent = useSelector((state: any) => state.messageSent1);
 
   const dispatch = useDispatch();
   const schema = yup.object({

@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export const Home = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state: any) => state.user);
-  const tog = useSelector((state: any) => state.toggle);
+  const tog = useSelector((state: any) => state.toggle1);
 
   const schema = yup.object({
     name: yup.string().required(),
